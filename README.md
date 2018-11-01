@@ -18,3 +18,11 @@ In the `csv` folder you find some data files.
 - Create a simple REST API endpoint that returns a list of users as json. The REST API can be treated as internal only so no authentication/authorization is needed here.
 - Create an import for the playlists and mp3
 - Extend the users view to also show the playlists each user has
+
+## UseCases
+
+- [ ] Import users
+- [ ] List users
+- [ ] Import MP3
+- [ ] Import Playlists
+- [ ] List Playlists of the user
