@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'users' => 'users#index'
+  get 'api/users', to: 'users#index', defaults: { format: 'json' }
   post 'users/import' => 'users#import'
   post 'tracks/import' => 'tracks#import'
   post 'playlists/import' => 'playlists#import'

@@ -15,7 +15,7 @@ In the `csv` folder you find some data files.
 - [x] Set up an appropriate data model for the data in the csv files
 - [x] Create an import for the users
 - [x] Create a simple controller/view to show a list of users
-- [ ] Create a simple REST API endpoint that returns a list of users as json. The REST API can be treated as internal only so no authentication/authorization is needed here.
+- [x] Create a simple REST API endpoint that returns a list of users as json. The REST API can be treated as internal only so no authentication/authorization is needed here.
 - [x] Create an import for the playlists and mp3
 - [x] Extend the users view to also show the playlists each user has
 
