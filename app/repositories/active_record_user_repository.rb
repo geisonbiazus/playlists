@@ -22,12 +22,10 @@ class ActiveRecordUserRepository < Playlists::Repositories::UserRepository
   end
 
   def all
-    User.all.map { |record| initialize_user(record) }
+    User.all.map { |record| self.class.initialize_user(record) }
   end
 
-  private
-
-  def initialize_user(record)
+  def self.initialize_user(record)
     Playlists::Entities::User.new(
       id: record.id,
       first_name: record.first_name,

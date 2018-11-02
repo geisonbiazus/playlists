@@ -26,12 +26,10 @@ class ActiveRecordTrackRepository < Playlists::Repositories::TrackRepository
   end
 
   def all
-    Track.all.map { |record| initialize_track(record) }
+    Track.all.map { |record| self.class.initialize_track(record) }
   end
 
-  private
-
-  def initialize_track(record)
+  def self.initialize_track(record)
     Playlists::Entities::Track.new(
       id: record.id,
       title: record.title,
