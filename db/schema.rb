@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 2018_11_02_172033) do
   enable_extension "plpgsql"
 
   create_table "tracks", force: :cascade do |t|
-    t.integer "identifier"
     t.string "title"
     t.string "interpret"
     t.string "album"
@@ -25,18 +24,15 @@ ActiveRecord::Schema.define(version: 2018_11_02_172033) do
     t.string "genre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["identifier"], name: "index_tracks_on_identifier", unique: true
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer "identifier"
     t.string "first_name"
     t.string "last_name"
     t.string "email"
     t.string "username"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["identifier"], name: "index_users_on_identifier", unique: true
   end
 
 end

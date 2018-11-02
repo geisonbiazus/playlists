@@ -1,7 +1,7 @@
 class ActiveRecordTrackRepository < Playlists::Repositories::TrackRepository
   def create(track)
     Track.create(
-      identifier: track.id,
+      id: track.id,
       title: track.title,
       interpret: track.interpret,
       album: track.album,
@@ -14,7 +14,7 @@ class ActiveRecordTrackRepository < Playlists::Repositories::TrackRepository
   end
 
   def update(track)
-    record = Track.find_by(identifier: track.id)
+    record = Track.find(track.id)
     record.update(
       title: track.title,
       interpret: track.interpret,
@@ -33,7 +33,7 @@ class ActiveRecordTrackRepository < Playlists::Repositories::TrackRepository
 
   def initialize_track(record)
     Playlists::Entities::Track.new(
-      id: record.identifier,
+      id: record.id,
       title: record.title,
       interpret: record.interpret,
       album: record.album,

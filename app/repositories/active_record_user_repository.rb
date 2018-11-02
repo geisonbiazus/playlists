@@ -1,7 +1,7 @@
 class ActiveRecordUserRepository < Playlists::Repositories::UserRepository
   def create(user)
     User.create(
-      identifier: user.id,
+      id: user.id,
       first_name: user.first_name,
       last_name: user.last_name,
       email: user.email,
@@ -12,7 +12,7 @@ class ActiveRecordUserRepository < Playlists::Repositories::UserRepository
   end
 
   def update(user)
-    record = User.find_by(identifier: user.id)
+    record = User.find(user.id)
     record.update(
       first_name: user.first_name,
       last_name: user.last_name,
@@ -29,7 +29,7 @@ class ActiveRecordUserRepository < Playlists::Repositories::UserRepository
 
   def initialize_user(record)
     Playlists::Entities::User.new(
-      id: record.identifier,
+      id: record.id,
       first_name: record.first_name,
       last_name: record.last_name,
       email: record.email,

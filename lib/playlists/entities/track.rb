@@ -3,7 +3,7 @@ module Playlists
     class Track
       attr_accessor :id, :title, :interpret, :album, :track, :year, :genre
 
-      def initialize(id: 0,
+      def initialize(id: nil,
                      title: '',
                      interpret: '',
                      album: '',

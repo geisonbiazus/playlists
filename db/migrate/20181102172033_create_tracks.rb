@@ -1,7 +1,6 @@
 class CreateTracks < ActiveRecord::Migration[5.2]
   def change
     create_table :tracks do |t|
-      t.integer :identifier
       t.string :title
       t.string :interpret
       t.string :album
@@ -11,7 +10,5 @@ class CreateTracks < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-
-    add_index :tracks, :identifier, unique: true
   end
 end

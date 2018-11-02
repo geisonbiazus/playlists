@@ -25,7 +25,7 @@ RSpec.describe ActiveRecordTrackRepository do
     it 'creates the track with the given arguments' do
       repository.create(track)
       created_track = Track.last
-      expect(created_track.identifier).to eq track.id
+      expect(created_track.id).to eq track.id
       expect(created_track.title).to eq track.title
       expect(created_track.interpret).to eq track.interpret
       expect(created_track.album).to eq track.album
@@ -34,9 +34,9 @@ RSpec.describe ActiveRecordTrackRepository do
       expect(created_track.genre).to eq track.genre
     end
 
-    context 'when a track with the same identifier already exist' do
+    context 'when a track with the same id already exist' do
       before do
-        Track.create(identifier: track.id)
+        Track.create(id: track.id)
       end
 
       it 'raiser TrackAlreadyExistsError' do
@@ -49,14 +49,14 @@ RSpec.describe ActiveRecordTrackRepository do
 
   describe '#update' do
     before do
-      Track.create(identifier: track.id)
+      Track.create(id: track.id)
     end
 
     it 'updates the track' do
       repository.update(track)
       updated_track = Track.last
 
-      expect(updated_track.identifier).to eq track.id
+      expect(updated_track.id).to eq track.id
       expect(updated_track.title).to eq track.title
       expect(updated_track.interpret).to eq track.interpret
       expect(updated_track.album).to eq track.album

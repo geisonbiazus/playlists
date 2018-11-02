@@ -23,16 +23,16 @@ RSpec.describe ActiveRecordUserRepository do
     it 'creates the user with the given arguments' do
       repository.create(user)
       created_user = User.last
-      expect(created_user.identifier).to eq user.id
+      expect(created_user.id).to eq user.id
       expect(created_user.first_name).to eq user.first_name
       expect(created_user.last_name).to eq user.last_name
       expect(created_user.email).to eq user.email
       expect(created_user.username).to eq user.username
     end
 
-    context 'when an user with the same identifier already exist' do
+    context 'when an user with the same id already exist' do
       before do
-        User.create(identifier: user.id)
+        User.create(id: user.id)
       end
 
       it 'raiser UserAlreadyExistsError' do
@@ -45,14 +45,14 @@ RSpec.describe ActiveRecordUserRepository do
 
   describe '#update' do
     before do
-      User.create(identifier: user.id)
+      User.create(id: user.id)
     end
 
     it 'updates the user' do
       repository.update(user)
       updated_user = User.last
 
-      expect(updated_user.identifier).to eq user.id
+      expect(updated_user.id).to eq user.id
       expect(updated_user.first_name).to eq user.first_name
       expect(updated_user.last_name).to eq user.last_name
       expect(updated_user.email).to eq user.email

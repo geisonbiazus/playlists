@@ -3,7 +3,7 @@ module Playlists
     class User
       attr_accessor :id, :first_name, :last_name, :email, :username
 
-      def initialize(id: 0,
+      def initialize(id: nil,
                      first_name: '',
                      last_name: '',
                      email: '',
