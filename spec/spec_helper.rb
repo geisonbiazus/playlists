@@ -1,2 +1,3 @@
-require File.join(__dir__, '..', 'lib', 'import_users_service')
-require File.join(__dir__, '..', 'lib', 'user')
+require File.join(__dir__, '..', 'lib', 'playlists')
+
+require File.join(__dir__, 'lib', 'doubles', 'in_memory_user_repository')

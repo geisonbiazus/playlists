@@ -21,7 +21,7 @@ In the `csv` folder you find some data files.
 
 ## UseCases
 
-- [ ] Import users
+- [x] Import users
 - [ ] List users
 - [ ] Import MP3
 - [ ] Import Playlists

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe ImportUsersService do
+RSpec.describe Playlists::Services::ImportUsersService do
   let(:repository) { InMemoryUserRepository.new }
   let(:service) { described_class.new(repository) }
 
@@ -13,7 +13,7 @@ RSpec.describe ImportUsersService do
       end
 
       let(:susan) do
-        User.new(
+        Playlists::Entities::User.new(
           id: 1,
           first_name: 'Susan',
           last_name: 'Gomez',
@@ -23,7 +23,7 @@ RSpec.describe ImportUsersService do
       end
 
       let(:betty) do
-        User.new(
+        Playlists::Entities::User.new(
           id: 2,
           first_name: 'Betty',
           last_name: 'Crawford',
@@ -46,7 +46,7 @@ RSpec.describe ImportUsersService do
       end
 
       let(:betty) do
-        User.new(
+        Playlists::Entities::User.new(
           id: 1,
           first_name: 'Betty',
           last_name: 'Crawford',
@@ -60,24 +60,5 @@ RSpec.describe ImportUsersService do
         expect(repository.all).to eq [betty]
       end
     end
-  end
-end
-
-class InMemoryUserRepository
-  def initialize
-    @data = {}
-  end
-
-  def create(user)
-    raise UserAlreadyExistsError if @data[user.id]
-    @data[user.id] = user
-  end
-
-  def update(user)
-    @data[user.id] = user
-  end
-
-  def all
-    @data.values
   end
 end
