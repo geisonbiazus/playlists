@@ -7,11 +7,18 @@ class ImportUsersService
 
   def run(csv)
     CSV.parse(csv, headers: true) do |line|
-      @user_repository.create(new_user(line))
+      add_user(line)
     end
   end
 
   private
+
+  def add_user(line)
+    user = new_user(line)
+    @user_repository.create(user)
+  rescue UserAlreadyExistsError
+    @user_repository.update(user)
+  end
 
   def new_user(line)
     User.new(id: line[0].to_i,
@@ -21,3 +28,5 @@ class ImportUsersService
              username: line[4])
   end
 end
+
+class UserAlreadyExistsError < StandardError; end

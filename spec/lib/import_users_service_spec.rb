@@ -37,19 +37,47 @@ RSpec.describe ImportUsersService do
         expect(repository.all).to eq [susan, betty]
       end
     end
+
+    context 'with duplicated ids' do
+      let(:csv) do
+        "id,first_name,last_name,email,user_name\n" \
+        "1,Susan,Gomez,sgomez0@cpanel.net,sgomez0\n" \
+        "1,Betty,Crawford,bcrawford1@google.com.au,bcrawford1\n"
+      end
+
+      let(:betty) do
+        User.new(
+          id: 1,
+          first_name: 'Betty',
+          last_name: 'Crawford',
+          email: 'bcrawford1@google.com.au',
+          username: 'bcrawford1'
+        )
+      end
+
+      it 'updates the record' do
+        service.run(csv)
+        expect(repository.all).to eq [betty]
+      end
+    end
   end
 end
 
 class InMemoryUserRepository
   def initialize
-    @data = []
+    @data = {}
   end
 
   def create(user)
-    @data << user
+    raise UserAlreadyExistsError if @data[user.id]
+    @data[user.id] = user
+  end
+
+  def update(user)
+    @data[user.id] = user
   end
 
   def all
-    @data
+    @data.values
   end
 end
