@@ -1,0 +1,33 @@
+<% @playlists.each do |playlist| %>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Playlist:</th>
+        <th scope="col" colspan="6"><%= playlist.name %></th>
+      </tr>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Interpret</th>
+        <th scope="col">Album</th>
+        <th scope="col">Track</th>
+        <th scope="col">Year</th>
+        <th scope="col">Genre</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% playlist.tracks.each do |track| %>
+        <tr>
+          <td><%= track.id %></td>
+          <td><%= track.title %></td>
+          <td><%= track.interpret %></td>
+          <td><%= track.album %></td>
+          <td><%= track.track %></td>
+          <td><%= track.year %></td>
+          <td><%= track.genre %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

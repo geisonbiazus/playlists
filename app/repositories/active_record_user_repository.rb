@@ -28,7 +28,7 @@ class ActiveRecordUserRepository < Playlists::Repositories::UserRepository
   end
 
   def all
-    User.all.map { |record| self.class.initialize_user(record) }
+    User.all.order(:id).map { |record| self.class.initialize_user(record) }
   end
 
   def self.initialize_user(record)

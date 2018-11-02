@@ -38,6 +38,7 @@
       <th scope="col">Last Name</th>
       <th scope="col">Email</th>
       <th scope="col">Username</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -48,6 +49,7 @@
         <td><%= user.last_name %></td>
         <td><%= user.email %></td>
         <td><%= user.username %></td>
+        <td><%= link_to 'Playlists', user_playlists_path(user.id) %></td>
       </tr>
     <% end %>
   </tbody>

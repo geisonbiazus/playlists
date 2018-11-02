@@ -24,7 +24,9 @@ class ActiveRecordPlaylistRepository < Playlists::Repositories::PlaylistReposito
   end
 
   def find_all_by_user_id(user_id)
-    initialize_playlists(Playlist.where(user_id: user_id))
+    initialize_playlists(
+      Playlist.where(user_id: user_id).includes(:tracks, :user).order(:id)
+    )
   end
 
   def self.initialize_playlist(record)

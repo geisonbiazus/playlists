@@ -4,15 +4,15 @@ RSpec.describe UsersController, type: :controller do
   include ActionDispatch::TestProcess::FixtureFile
   render_views
 
-  let(:repository) { @controller.user_repository }
+  let(:user_repository) { @controller.user_repository }
 
   describe "GET #index" do
     let(:user_1) { Playlists::Entities::User.new(id: 1, username: 'user1') }
     let(:user_2) { Playlists::Entities::User.new(id: 2, username: 'user2') }
 
     before do
-      repository.create(user_1)
-      repository.create(user_2)
+      user_repository.create(user_1)
+      user_repository.create(user_2)
 
       get :index
     end
@@ -54,7 +54,7 @@ RSpec.describe UsersController, type: :controller do
       end
 
       it 'imports a users CSV file' do
-        expect(repository.all.length).to eq 2
+        expect(user_repository.all.length).to eq 2
       end
 
       it 'shows success message' do
@@ -67,6 +67,39 @@ RSpec.describe UsersController, type: :controller do
         post :import
         expect(flash[:error]).to eq('File is required')
       end
+    end
+  end
+
+  describe 'GET playlists' do
+    let(:playlist_repository) { @controller.playlist_repository }
+    let(:user) { Playlists::Entities::User.new(id: 1, first_name: 'User') }
+
+    let(:playlist_1) do
+      Playlists::Entities::Playlist.new(
+        id: 1,
+        user: user,
+        name: '1_playlist_1'
+      )
+    end
+
+    let(:playlist_2) do
+      Playlists::Entities::Playlist.new(
+        id: 2,
+        user: user,
+        name: '1_playlist_1'
+      )
+    end
+
+    before do
+      user_repository.create(user)
+      playlist_repository.create(playlist_1)
+      playlist_repository.create(playlist_2)
+    end
+
+    it 'lists all playlists of the given user id' do
+      get :playlists, params: { id: user.id }
+      expect(response.body).to include(playlist_1.name)
+      expect(response.body).to include(playlist_2.name)
     end
   end
 end

@@ -13,8 +13,16 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+  def playlists
+    @playlists = list_playlists_from_user_service.run(params[:id])
+  end
+
   def user_repository
     @user_repository ||= ActiveRecordUserRepository.new
+  end
+
+  def playlist_repository
+    @playlist_repository ||= ActiveRecordPlaylistRepository.new
   end
 
   private
@@ -25,5 +33,9 @@ class UsersController < ApplicationController
 
   def list_user_service
     @user_service ||= Playlists::Services::ListUsersService.new(user_repository)
+  end
+
+  def list_playlists_from_user_service
+    @list_playlists_from_user_service = Playlists::Services::ListPlaylistsFromUserService.new(playlist_repository)
   end
 end
