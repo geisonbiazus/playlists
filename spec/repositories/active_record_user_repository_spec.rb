@@ -14,11 +14,10 @@ RSpec.describe ActiveRecordUserRepository do
   end
 
   describe '#create' do
-
     it 'creates a user' do
-      expect {
+      expect do
         repository.create(user)
-      }.to change(User, :count).by(1)
+      end.to change(User, :count).by(1)
     end
 
     it 'creates the user with the given arguments' do
@@ -31,15 +30,15 @@ RSpec.describe ActiveRecordUserRepository do
       expect(created_user.username).to eq user.username
     end
 
-    context 'when an user iwht the same identifier already exist' do
+    context 'when an user with the same identifier already exist' do
       before do
         User.create(identifier: user.id)
       end
 
       it 'raiser UserAlreadyExistsError' do
-        expect {
+        expect do
           repository.create(user)
-        }.to raise_error(Playlists::Repositories::UserRepository::UserAlreadyExistsError)
+        end.to raise_error(Playlists::Repositories::UserRepository::UserAlreadyExistsError)
       end
     end
   end
