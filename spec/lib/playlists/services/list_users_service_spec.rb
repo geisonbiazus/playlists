@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 RSpec.describe Playlists::Services::ListUsersService do
   let(:repository) { InMemoryUserRepository.new }
