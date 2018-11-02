@@ -18,6 +18,15 @@ RSpec.describe ActiveRecordPlaylistRepository do
     )
   end
 
+  let(:another_playlist) do
+    Playlists::Entities::Playlist.new(
+      id: 2,
+      user: user,
+      name: '1_playlist_1',
+      tracks: [track_2]
+    )
+  end
+
   before do
     user_repository.create(user)
     track_repository.create(track_1)
@@ -71,15 +80,6 @@ RSpec.describe ActiveRecordPlaylistRepository do
   end
 
   describe '#all' do
-    let(:another_playlist) do
-      Playlists::Entities::Playlist.new(
-        id: 2,
-        user: user,
-        name: '1_playlist_1',
-        tracks: [track_2]
-      )
-    end
-
     before do
       repository.create(playlist)
       repository.create(another_playlist)
@@ -87,6 +87,15 @@ RSpec.describe ActiveRecordPlaylistRepository do
 
     it 'returns all playlists' do
       expect(repository.all).to eq [playlist, another_playlist]
+    end
+  end
+
+  describe '#find_all_by_user_id' do
+    it 'returns all playlists for the given user' do
+      repository.create(playlist)
+      repository.create(another_playlist)
+
+      expect(repository.find_all_by_user_id(user.id)).to eq [playlist, another_playlist]
     end
   end
 end

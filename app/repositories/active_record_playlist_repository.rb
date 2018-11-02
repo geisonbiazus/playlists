@@ -20,7 +20,11 @@ class ActiveRecordPlaylistRepository < Playlists::Repositories::PlaylistReposito
   end
 
   def all
-    Playlist.all.map { |record| self.class.initialize_playlist(record) }
+    initialize_playlists(Playlist.all)
+  end
+
+  def find_all_by_user_id(user_id)
+    initialize_playlists(Playlist.where(user_id: user_id))
   end
 
   def self.initialize_playlist(record)
@@ -32,5 +36,11 @@ class ActiveRecordPlaylistRepository < Playlists::Repositories::PlaylistReposito
         ActiveRecordTrackRepository.initialize_track(track)
       end
     )
+  end
+
+  private
+
+  def initialize_playlists(records)
+    records.map { |record| self.class.initialize_playlist(record) }
   end
 end
