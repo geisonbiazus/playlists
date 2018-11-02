@@ -18,6 +18,12 @@
   <%= submit_tag 'Send', class: 'btn btn-primary my-1 mr-sm-2' %>
 <% end %>
 
+<%= form_tag tracks_import_path, method: :post, multipart: true, class: 'form-inline' do %>
+  <%= label_tag 'file', 'Import Tracks CSV File', class: 'font-weight-bold my-1 mr-2' %>
+  <%= file_field_tag 'file', class: 'my-1 mr-sm-2', required: true %>
+  <%= submit_tag 'Send', class: 'btn btn-primary my-1 mr-sm-2' %>
+<% end %>
+
 <table class="table table-striped">
   <thead>
     <tr>

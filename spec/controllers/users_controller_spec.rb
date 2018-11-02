@@ -18,7 +18,7 @@ RSpec.describe UsersController, type: :controller do
     end
 
     it 'returns success status' do
-      expect(response).to be_success
+      expect(response).to have_http_status(:success)
     end
 
     it 'lists all users' do

@@ -23,6 +23,6 @@ In the `csv` folder you find some data files.
 
 - [x] Import users
 - [x] List users
-- [ ] Import MP3
+- [x] Import MP3
 - [ ] Import Playlists
 - [ ] List Playlists of the user
