@@ -4,7 +4,7 @@ RSpec.describe Playlists::Services::ImportUsersService do
   let(:repository) { InMemoryUserRepository.new }
   let(:service) { described_class.new(repository) }
 
-  describe 'run' do
+  describe '#run' do
     context 'with a users CSV' do
       let(:csv) do
         "id,first_name,last_name,email,user_name\n" \
