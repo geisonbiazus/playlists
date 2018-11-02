@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def user_repository
-    @user_repository ||= InMemoryUserRepository.new
+    @user_repository ||= ActiveRecordUserRepository.new
   end
 
   private
