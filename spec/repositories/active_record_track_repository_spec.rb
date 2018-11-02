@@ -15,6 +15,28 @@ RSpec.describe ActiveRecordTrackRepository do
     )
   end
 
+  let(:another_track) do
+    Playlists::Entities::Track.new(
+      id: 2,
+      title: 'Rumour Has It',
+      interpret: 'Adele',
+      album: '21',
+      track: '2',
+      year: '2011',
+      genre: 'Pop'
+    )
+  end
+
+  describe '#find_all_by_id' do
+    it 'returns a list of tracks of the givne ids ignoring not found' do
+      repository.create(track)
+      repository.create(another_track)
+      expect(
+        repository.find_all_by_id([track.id, another_track.id, 999])
+      ).to eq [track, another_track]
+    end
+  end
+
   describe '#create' do
     it 'creates a track' do
       expect {
@@ -67,18 +89,6 @@ RSpec.describe ActiveRecordTrackRepository do
   end
 
   describe '#all' do
-    let(:another_track) do
-      Playlists::Entities::Track.new(
-        id: 2,
-        title: 'Rumour Has It',
-        interpret: 'Adele',
-        album: '21',
-        track: '2',
-        year: '2011',
-        genre: 'Pop'
-      )
-    end
-
     before do
       repository.create(track)
       repository.create(another_track)

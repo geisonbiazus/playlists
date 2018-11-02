@@ -1,4 +1,10 @@
 class ActiveRecordUserRepository < Playlists::Repositories::UserRepository
+  def find_by_id(id)
+    self.class.initialize_user(User.find(id))
+  rescue ActiveRecord::RecordNotFound
+    nil
+  end
+
   def create(user)
     User.create(
       id: user.id,

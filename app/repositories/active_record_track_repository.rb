@@ -1,4 +1,10 @@
 class ActiveRecordTrackRepository < Playlists::Repositories::TrackRepository
+  def find_all_by_id(ids)
+    Track.where(id: ids).map do |record|
+      self.class.initialize_track(record)
+    end
+  end
+
   def create(track)
     Track.create(
       id: track.id,

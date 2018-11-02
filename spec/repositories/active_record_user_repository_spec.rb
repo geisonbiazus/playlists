@@ -13,6 +13,19 @@ RSpec.describe ActiveRecordUserRepository do
     )
   end
 
+  describe '#find_by_id' do
+    it 'returns the user of the given id' do
+      repository.create(user)
+      expect(repository.find_by_id(user.id)).to eq user
+    end
+
+    context 'when the user does not exist' do
+      it 'returns nil' do
+        expect(repository.find_by_id(user.id)).to be_nil
+      end
+    end
+  end
+
   describe '#create' do
     it 'creates a user' do
       expect do
