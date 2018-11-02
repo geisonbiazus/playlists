@@ -1,9 +1,24 @@
 <h1>Users</h1>
 
-<ul>
-<% @users.each do |user| %>
-  <li>
-    <%= user.username %>
-  </li>
-<% end %>
-</ul>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.username %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
