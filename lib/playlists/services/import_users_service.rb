@@ -1,5 +1,3 @@
-require 'csv'
-
 module Playlists
   module Services
     class ImportUsersService

@@ -16,6 +16,7 @@
 
 require File.join(__dir__, '..', 'lib', 'playlists')
 require File.join(__dir__, 'lib', 'doubles', 'in_memory_user_repository')
+require File.join(__dir__, 'lib', 'doubles', 'in_memory_track_repository')
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
