@@ -59,5 +59,3 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
-
-require File.join(__dir__, 'lib', 'doubles', 'in_memory_user_repository')

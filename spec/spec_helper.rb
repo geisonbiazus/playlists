@@ -14,6 +14,9 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
+require File.join(__dir__, '..', 'lib', 'playlists')
+require File.join(__dir__, 'lib', 'doubles', 'in_memory_user_repository')
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
