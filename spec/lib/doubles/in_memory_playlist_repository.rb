@@ -17,4 +17,10 @@ class InMemoryPlaylistRepository < Playlists::Repositories::PlaylistRepository
   def all
     @data.values
   end
+
+  def find_all_by_user_id(user_id)
+    @data.values.find_all do |playlist|
+      playlist.user.id == user_id
+    end
+  end
 end
