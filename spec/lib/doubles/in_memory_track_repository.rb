@@ -3,6 +3,10 @@ class InMemoryTrackRepository < Playlists::Repositories::TrackRepository
     @data = {}
   end
 
+  def find_all_by_id(ids)
+    ids.map { |id| @data[id] }.compact
+  end
+
   def create(track)
     if @data[track.id]
       raise Playlists::Repositories::TrackRepository::TrackAlreadyExistsError

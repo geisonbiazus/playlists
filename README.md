@@ -24,5 +24,5 @@ In the `csv` folder you find some data files.
 - [x] Import users
 - [x] List users
 - [x] Import MP3
-- [ ] Import Playlists
+- [x] Import Playlists
 - [ ] List Playlists of the user

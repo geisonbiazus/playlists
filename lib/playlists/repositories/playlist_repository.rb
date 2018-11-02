@@ -1,15 +1,11 @@
 module Playlists
   module Repositories
-    class UserRepository
-      def find_by_id(id)
+    class PlaylistRepository
+      def create(_playlist)
         raise "Not implemented"
       end
 
-      def create(_user)
-        raise "Not implemented"
-      end
-
-      def update(_user)
+      def update(_playlist)
         raise "Not implemented"
       end
 
@@ -17,7 +13,7 @@ module Playlists
         raise "Not implemented"
       end
 
-      class UserAlreadyExistsError < StandardError; end
+      class PlaylistAlreadyExistsError < StandardError; end
     end
   end
 end

@@ -3,6 +3,10 @@ class InMemoryUserRepository < Playlists::Repositories::UserRepository
     @data = {}
   end
 
+  def find_by_id(id)
+    @data[id]
+  end
+
   def create(user)
     if @data[user.id]
       raise Playlists::Repositories::UserRepository::UserAlreadyExistsError

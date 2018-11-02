@@ -1,6 +1,10 @@
 module Playlists
   module Repositories
     class TrackRepository
+      def find_all_by_id(ids)
+        raise "Not implemented"
+      end
+
       def create(_track)
         raise "Not implemented"
       end
