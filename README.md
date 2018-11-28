@@ -1,11 +1,5 @@
 # Coding Challenge: Playlists
 
-Welcome to the coding challenge.
-
-This challenge will give us an idea about your coding skills. Don't worry if you can't finish all requirements in time. Just tell us how you would proceed.
-
-We're using Rails 4, RSpec 3.5 etc.
-
 In the `csv` folder you find some data files.
 
 ## Tasks
